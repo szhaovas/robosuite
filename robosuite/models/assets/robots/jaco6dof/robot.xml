@@ -1,0 +1,103 @@
+<mujoco model="j2n6s200">
+  <actuator>
+    <motor ctrllimited="true" ctrlrange="-2000 2000" joint="j2n6s200_joint_1" name="torq_j1"/>
+    <motor ctrllimited="true" ctrlrange="-2000 2000" joint="j2n6s200_joint_2" name="torq_j2"/>
+    <motor ctrllimited="true" ctrlrange="-2000 2000" joint="j2n6s200_joint_3" name="torq_j3"/>
+    <motor ctrllimited="true" ctrlrange="-2000 2000" joint="j2n6s200_joint_4" name="torq_j4"/>
+    <motor ctrllimited="true" ctrlrange="-2000 2000" joint="j2n6s200_joint_5" name="torq_j5"/>
+    <motor ctrllimited="true" ctrlrange="-2000 2000" joint="j2n6s200_joint_6" name="torq_j6"/>
+  </actuator>
+  <asset>
+    <mesh name="base" file="meshes/base.stl"/>
+    <mesh name="collision_base" file="meshes/collision_base.stl"/>
+    <mesh name="shoulder" file="meshes/shoulder.stl"/>
+    <mesh name="ring_big" file="meshes/ring_big.stl"/>
+    <mesh name="collision_shoulder" file="meshes/collision_shoulder.stl"/>
+    <mesh name="arm" file="meshes/arm.stl"/>
+    <mesh name="collision_arm" file="meshes/collision_arm.stl"/>
+    <mesh name="forearm" file="meshes/forearm.stl"/>
+    <mesh name="collision_forearm" file="meshes/collision_forearm.stl"/>
+    <mesh name="wrist" file="meshes/wrist.stl"/>
+    <mesh name="ring_small" file="meshes/ring_small.stl"/>
+    <mesh name="collision_wrist" file="meshes/collision_wrist.stl"/>
+    <mesh name="hand_2finger" file="meshes/hand_2finger.stl"/>
+    <mesh name="collision_hand_2finger" file="meshes/collision_hand_2finger.stl"/>
+    <mesh name="finger_proximal" file="meshes/finger_proximal.stl"/>
+    <mesh name="collision_finger_proximal" file="meshes/collision_finger_proximal.stl"/>
+    <mesh name="finger_distal" content_type="model/stl" file="meshes/finger_distal.stl"/>
+    <mesh name="collision_finger_distal" file="meshes/collision_finger_distal.stl"/>
+  </asset>
+
+  <worldbody>
+    <body name="base" pos="0 0 0">
+      <!-- robot view -->
+      <camera mode="fixed" name="robotview" pos="1.0 0 0.4" quat="0.653 0.271 0.271 0.653"/>
+      <inertial diaginertia="0 0 0" mass="0" pos="0 0 0"/>
+      <!-- mount attached here -->
+      <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.792157 0.819608 0.933333 1" mesh="base"/>
+      <geom type="mesh" rgba="0.792157 0.819608 0.933333 1" mesh="collision_base"/>
+      <body name="j2n6s200_link_1" pos="0 0 0.15675" quat="0 0 1 0">
+        <inertial pos="0 -0.002 -0.0605" mass="0.7477" diaginertia="0.00152032 0.00152032 0.00059816"/>
+        <joint name="j2n6s200_joint_1" pos="0 0 0" axis="0 0 1" range="-6.28319 6.28319" actuatorfrcrange="-2000 2000"/>
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.792157 0.819608 0.933333 1" mesh="shoulder"/>
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.792157 0.819608 0.933333 1" mesh="ring_big"/>
+        <geom type="mesh" rgba="0.792157 0.819608 0.933333 1" mesh="collision_shoulder"/>
+        <body name="j2n6s200_link_2" pos="0 0.0016 -0.11875" quat="0 0 -0.707107 0.707107">
+          <inertial pos="0 -0.2065 -0.01" quat="0.707107 0.707107 0 0" mass="0.99" diaginertia="0.0105022 0.0105022 0.000792"/>
+          <joint name="j2n6s200_joint_2" pos="0 0 0" axis="0 0 1" range="0.820305 5.46288" actuatorfrcrange="-2000 2000"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.792157 0.819608 0.933333 1" mesh="arm"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.792157 0.819608 0.933333 1" mesh="ring_big"/>
+          <geom type="mesh" rgba="0.792157 0.819608 0.933333 1" mesh="collision_arm"/>
+          <body name="j2n6s200_link_3" pos="0 -0.41 0" quat="0 0 1 0">
+            <inertial pos="0 0.081 -0.0086" quat="0.707107 0.707107 0 0" mass="0.6763" diaginertia="0.00142022 0.00142022 0.000304335"/>
+            <joint name="j2n6s200_joint_3" pos="0 0 0" axis="0 0 1" range="0.331613 5.95157" actuatorfrcrange="-2000 2000"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.792157 0.819608 0.933333 1" mesh="forearm"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.792157 0.819608 0.933333 1" mesh="ring_big"/>
+            <geom type="mesh" rgba="0.792157 0.819608 0.933333 1" mesh="collision_forearm"/>
+            <body name="j2n6s200_link_4" pos="0 0.2073 -0.0114" quat="0 0 -0.707107 0.707107">
+              <inertial pos="0 -0.037 -0.0642" quat="0.5 0.5 -0.5 0.5" mass="0.1785" diaginertia="0.0001428 7.73497e-05 7.73497e-05"/>
+              <joint name="j2n6s200_joint_4" pos="0 0 0" axis="0 0 1" range="-6.28319 6.28319" actuatorfrcrange="-2000 2000"/>
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.792157 0.819608 0.933333 1" mesh="wrist"/>
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.792157 0.819608 0.933333 1" mesh="ring_small"/>
+              <geom type="mesh" rgba="0.792157 0.819608 0.933333 1" mesh="collision_wrist"/>
+              <body name="j2n6s200_link_5" pos="0 -0.03703 -0.06414" quat="0 0 0.5 0.866025">
+                <inertial pos="0 -0.037 -0.0642" quat="0.5 0.5 -0.5 0.5" mass="0.1785" diaginertia="0.0001428 7.73497e-05 7.73497e-05"/>
+                <joint name="j2n6s200_joint_5" pos="0 0 0" axis="0 0 1" range="-6.28319 6.28319" actuatorfrcrange="-2000 2000"/>
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.792157 0.819608 0.933333 1" mesh="wrist"/>
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.792157 0.819608 0.933333 1" mesh="ring_small"/>
+                <geom type="mesh" rgba="0.792157 0.819608 0.933333 1" mesh="collision_wrist"/>
+                <body name="j2n6s200_link_6" pos="0 -0.03703 -0.06414" quat="0 0 0.5 0.866025">
+                  <inertial pos="0 0 -0.06" quat="0.5 0.5 -0.5 0.5" mass="0.78" diaginertia="0.000624 0.000370499 0.000370499"/>
+                  <joint name="j2n6s200_joint_6" pos="0 0 0" axis="0 0 1" range="-6.28319 6.28319" actuatorfrcrange="-2000 2000"/>
+                  <body name="right_hand" pos="0 0 0" quat="0 1 0 0">
+                      <!-- This camera points out from the eef. -->
+                      <camera mode="fixed" name="eye_in_hand" pos="0.08 0 0" quat="0 0.707108 0.707108 0" fovy="75"/>
+                      <!-- To add gripper -->
+                  </body>
+                  <!-- <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.792157 0.819608 0.933333 1" mesh="hand_2finger"/>
+                  <geom type="mesh" rgba="0.792157 0.819608 0.933333 1" mesh="collision_hand_2finger"/>
+                  <body name="j2n6s200_link_finger_1" pos="-0.0025 0.03095 -0.11482" quat="0.314405 -0.633364 -0.314405 0.633364">
+                    <inertial pos="0.044 -0.0015 0" quat="0.516726 0.516726 0.482695 0.482695" mass="0.02" diaginertia="1.1305e-05 9.885e-06 1.57999e-06"/>
+                    <joint name="j2n6s200_joint_finger_1" pos="0 0 0" axis="0 0 1" range="0 2" actuatorfrcrange="-2000 2000"/>
+                    <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.792157 0.819608 0.933333 1" mesh="finger_proximal"/>
+                    <geom type="mesh" rgba="0.792157 0.819608 0.933333 1" mesh="collision_finger_proximal"/>
+                    <geom pos="0.044 -0.003 0" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.792157 0.819608 0.933333 1" mesh="finger_distal"/>
+                    <geom pos="0.044 -0.003 0" quat="1 0 0 0" type="mesh" rgba="0.792157 0.819608 0.933333 1" mesh="collision_finger_distal"/>
+                  </body>
+                  <body name="j2n6s200_link_finger_2" pos="-0.0025 -0.03095 -0.11482" quat="0.633364 -0.314405 0.633364 -0.314405">
+                    <inertial pos="0.044 -0.0015 0" quat="0.516726 0.516726 0.482695 0.482695" mass="0.02" diaginertia="1.1305e-05 9.885e-06 1.57999e-06"/>
+                    <joint name="j2n6s200_joint_finger_2" pos="0 0 0" axis="0 0 1" range="0 2" actuatorfrcrange="-2000 2000"/>
+                    <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.792157 0.819608 0.933333 1" mesh="finger_proximal"/>
+                    <geom type="mesh" rgba="0.792157 0.819608 0.933333 1" mesh="collision_finger_proximal"/>
+                    <geom pos="0.044 -0.003 0" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.792157 0.819608 0.933333 1" mesh="finger_distal"/>
+                    <geom pos="0.044 -0.003 0" quat="1 0 0 0" type="mesh" rgba="0.792157 0.819608 0.933333 1" mesh="collision_finger_distal"/>
+                  </body> -->
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
