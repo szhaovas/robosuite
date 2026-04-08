@@ -31,7 +31,7 @@ class MountedJaco6DOF(ManipulatorModel):
         # reference since that gripper has 6 DOF, compared to PandaGripper's 2.
         # We don't want too many DOFs on gripper or else we'd have to modify 
         # VLA's output space.
-        return "PandaGripper"
+        return "JacoTwoFingerGripper"
 
     @property
     def default_controller_config(self):
