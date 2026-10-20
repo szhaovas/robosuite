@@ -21,7 +21,7 @@ class GripperModel(MujocoXMLModel):
         super().__init__(fname, idn=idn)
 
         # Set variable to hold current action being outputted
-        self.current_action = np.zeros(self.dof)
+        self.current_action = self.init_action
 
         # Grab gripper offset (string -> np.array -> elements [1, 2, 3, 0] (x, y, z, w))
         # This is the comopunded rotation with the base body and the eef body as well!
@@ -46,6 +46,11 @@ class GripperModel(MujocoXMLModel):
     # Properties: In general, these are the name-adjusted versions from the private          #
     #             subclass implementations pulled from their respective raw xml files        #
     # -------------------------------------------------------------------------------------- #
+
+    @property
+    def init_action(self):
+        """Return initial normalized commands in [-1, 1]; default to zero."""
+        return np.zeros(self.dof)
 
     @property
     def naming_prefix(self):

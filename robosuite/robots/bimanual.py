@@ -210,7 +210,7 @@ class Bimanual(Manipulator):
                 if not deterministic:
                     self.sim.data.qpos[self._ref_gripper_joint_pos_indexes[arm]] = self.gripper[arm].init_qpos
 
-                self.gripper[arm].current_action = np.zeros(self.gripper[arm].dof)
+                self.gripper[arm].current_action = self.gripper[arm].init_action
 
             # Update base pos / ori references in controller (technically only needs to be called once)
             self.controller[arm].update_base_pose(self.base_pos, self.base_ori)

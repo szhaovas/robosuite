@@ -180,7 +180,7 @@ class SingleArm(Manipulator):
             if not deterministic:
                 self.sim.data.qpos[self._ref_gripper_joint_pos_indexes] = self.gripper.init_qpos
 
-            self.gripper.current_action = np.zeros(self.gripper.dof)
+            self.gripper.current_action = self.gripper.init_action
 
         # Update base pos / ori references in controller
         self.controller.update_base_pose(self.base_pos, self.base_ori)
