@@ -53,6 +53,11 @@ class GripperModel(MujocoXMLModel):
         return np.zeros(self.dof)
 
     @property
+    def observation_joints(self):
+        """Ordered joint names included in position and velocity observations."""
+        return self.joints
+
+    @property
     def naming_prefix(self):
         return "gripper{}_".format(self.idn)
 

@@ -44,7 +44,7 @@ class MountedJaco6DOF(ManipulatorModel):
     @property
     def base_xpos_offset(self):
         return {
-            "table": lambda table_length: (0, -0.45, 0),
+            "table": lambda table_length: (0, 0.45, 0),
         }
 
     @property
