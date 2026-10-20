@@ -29,6 +29,11 @@ class JacoTwoFingerGripperBase(GripperModel):
         return np.array([0.0, 0.92637, 0.0, 0.92637])
 
     @property
+    def observation_joints(self):
+        """Expose the proximal thumb and index angles as gripper observations."""
+        return self.correct_naming(["joint_thumb", "joint_index"])
+
+    @property
     def _important_geoms(self):
         return {
             "left_finger": [
