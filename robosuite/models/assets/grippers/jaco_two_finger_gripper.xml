@@ -50,8 +50,8 @@
                     <inertial pos="0.022 0 0" mass="0.01" diaginertia="7.89997e-07 7.89997e-07 8e-08" />
                     <geom name="thumb_distal_visual" type="mesh" contype="0" conaffinity="0" group="1" euler="0 -1.5707 0" material="grey_plastic_hand" mesh="finger_distal" />
                     <geom name="thumb_distal_collision" type="mesh" group="0" mesh="finger_distal" euler="0 -1.5707 0" friction="1 0.5 0.01" />
-                    <geom type="box" group="0" pos="0 -0.003 0.021" quat="0.9914449 0.1305262 0 0" size="0.01 0.005 0.02" name="thumb_tip_collision" solref="0.01 0.25" friction="2 0.05 0.001" />
-                    <geom type="box" group="0" pos="0 0.0015 0.023" quat="0.9914449 0.1305262 0 0" size="0.008 0.001 0.018" name="thumb_pad_collision" />
+                    <geom type="box" group="0" pos="0 -0.003 0.021" quat="0.9914449 0.1305262 0 0" size="0.01 0.005 0.02" name="thumb_tip_collision" solref="0.01 0.25" friction="4 0.05 0.001" />
+                    <geom type="box" group="0" pos="0 0.0015 0.023" quat="0.9914449 0.1305262 0 0" size="0.008 0.001 0.018" name="thumb_pad_collision" friction="4 0.005 0.0001" />
                 </body>
             </body>
 
@@ -65,8 +65,8 @@
                     <inertial pos="0.022 0 0" mass="0.01" diaginertia="7.89997e-07 7.89997e-07 8e-08" />
                     <geom name="index_distal_visual" type="mesh" contype="0" conaffinity="0" group="1" quat="5.63312174e-04  7.06824957e-01 -5.62863772e-04  7.07388045e-01" material="grey_plastic_hand" mesh="finger_distal" />
                     <geom name="index_distal_collision" type="mesh" group="0" mesh="finger_distal" quat="5.63312174e-04  7.06824957e-01 -5.62863772e-04  7.07388045e-01" friction="1 0.5 0.01" />
-                    <geom type="box" group="0" pos="0 0.003 0.021" quat="0.9914449 -0.1305262 0 0" size="0.01 0.005 0.02" name="index_tip_collision" solref="0.01 0.25" friction="2 0.05 0.001" />
-                    <geom type="box" group="0" pos="0 -0.0015 0.023" quat="0.9914449 -0.1305262 0 0" size="0.008 0.001 0.018" name="index_pad_collision" />
+                    <geom type="box" group="0" pos="0 0.003 0.021" quat="0.9914449 -0.1305262 0 0" size="0.01 0.005 0.02" name="index_tip_collision" solref="0.01 0.25" friction="4 0.05 0.001" />
+                    <geom type="box" group="0" pos="0 -0.0015 0.023" quat="0.9914449 -0.1305262 0 0" size="0.008 0.001 0.018" name="index_pad_collision" friction="4 0.005 0.0001" />
                 </body>
             </body>
         </body>
