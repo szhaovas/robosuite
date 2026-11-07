@@ -10,36 +10,14 @@
         <material name="grey_plastic_hand" texture="grey_plastic_tex" rgba="0.88 0.86 0.86 1" />
     </asset>
 
-
-    <!-- q_new = 1.51 - q_old; tendon length becomes 0.604 - old length. -->
-    <tendon>
-		<!--Middlefinger tendons-->
-		<fixed name="thumb_cpl" range="-4.396 5.604" stiffness="3.0" springlength="0.404" frictionloss="0.4" limited="true">
-			<joint joint="joint_thumb"  coef="0.4"/>
-			<joint joint="joint_thumb_distal"  coef="0.4"/>
-		</fixed>
-
-		<!--finger2 tendons-->
-        <fixed name="index_12_cpl" range="-4.396 5.604" stiffness="3.0" springlength="0.404" frictionloss="0.4" limited="true">
-			<joint joint="joint_index"  coef="0.4"/>
-			<joint joint="joint_index_distal"  coef="0.4"/>
-		</fixed>
-	</tendon>
-
-    <equality>
-		<!-- GRIPPER Couplings -->
-		<tendon name="thumb_cpl" 	tendon1="thumb_cpl"/>
-
-        <tendon name="index_12_cpl" 	tendon1="index_12_cpl"/>
-	</equality>
-
+    <!-- Distal bodies are rigidly attached straight, equivalent to their former qpos = ref = -0.5 rad. -->
     <actuator>
-        <position name='thumb' ctrllimited="true" kp="20" joint='joint_thumb' ctrlrange='0 1.4' forcelimited="true" forcerange="-0.3 0.3" />
-        <position name='index' ctrllimited="true" kp="20" joint='joint_index' ctrlrange='0 1.4' forcelimited="true" forcerange="-0.3 0.3" />
+        <position name='thumb' ctrllimited="true" kp="20" joint='joint_thumb' ctrlrange='0.4 1.4' forcelimited="true" forcerange="-0.3 0.3" />
+        <position name='index' ctrllimited="true" kp="20" joint='joint_index' ctrlrange='0.4 1.4' forcelimited="true" forcerange="-0.3 0.3" />
     </actuator>
 
     <worldbody>
-        <!-- Note: This model is a tendon-driven variation of the model found at https://github.com/abr/abr_control/blob/master/abr_control/arms/jaco2/jaco2.xml -->
+        <!-- Note: This model is based on https://github.com/abr/abr_control/blob/master/abr_control/arms/jaco2/jaco2.xml -->
         <!-- Counterrotate the whole gripper to preserve its pose in the new hand frame. -->
         <body name="right_gripper" pos="0 0 0" quat="0.707105 0 0 0.707108">
             <inertial pos="0 0 0" mass="1e-6" diaginertia="1e-08 1e-08 1e-08" />
@@ -70,7 +48,6 @@
 
                 <body name="thumb_distal" pos="0 -0.003 0.044">
                     <inertial pos="0.022 0 0" mass="0.01" diaginertia="7.89997e-07 7.89997e-07 8e-08" />
-                    <joint name="joint_thumb_distal" pos="0 0 0" axis="-1 0 0" ref="-0.5" limited="true" range="0 2" damping="0.1" />
                     <geom name="thumb_distal_visual" type="mesh" contype="0" conaffinity="0" group="1" euler="0 -1.5707 0" material="grey_plastic_hand" mesh="finger_distal" />
                     <geom name="thumb_distal_collision" type="mesh" group="0" mesh="finger_distal" euler="0 -1.5707 0" friction="1 0.5 0.01" />
                     <geom type="box" group="0" pos="0 -0.003 0.021" quat="0.9914449 0.1305262 0 0" size="0.01 0.005 0.02" name="thumb_tip_collision" solref="0.01 0.25" friction="2 0.05 0.001" />
@@ -86,7 +63,6 @@
 
                 <body name="index_distal" pos="0 0.003 0.044">
                     <inertial pos="0.022 0 0" mass="0.01" diaginertia="7.89997e-07 7.89997e-07 8e-08" />
-                    <joint name="joint_index_distal" pos="0 0 0" axis="1 0 0" ref="-0.5" limited="true" range="0 2" damping="0.1" />
                     <geom name="index_distal_visual" type="mesh" contype="0" conaffinity="0" group="1" quat="5.63312174e-04  7.06824957e-01 -5.62863772e-04  7.07388045e-01" material="grey_plastic_hand" mesh="finger_distal" />
                     <geom name="index_distal_collision" type="mesh" group="0" mesh="finger_distal" quat="5.63312174e-04  7.06824957e-01 -5.62863772e-04  7.07388045e-01" friction="1 0.5 0.01" />
                     <geom type="box" group="0" pos="0 0.003 0.021" quat="0.9914449 -0.1305262 0 0" size="0.01 0.005 0.02" name="index_tip_collision" solref="0.01 0.25" friction="2 0.05 0.001" />

@@ -1,5 +1,5 @@
 """
-Tendon-coupled two-finger Jaco gripper.
+Two-finger Jaco gripper with rigid, straight distal links.
 """
 
 import numpy as np
@@ -9,7 +9,7 @@ from robosuite.utils.mjcf_utils import xml_path_completion
 
 class JacoTwoFingerGripperBase(GripperModel):
     """
-    Tendon-coupled two-finger Jaco gripper.
+    Two-finger Jaco gripper with rigid, straight distal links.
 
     Args:
         idn (int or str): Number or some other unique identification string for this gripper instance
@@ -25,8 +25,8 @@ class JacoTwoFingerGripperBase(GripperModel):
 
     @property
     def init_qpos(self):
-        # Fully open proximal joints and the measured settled distal angles.
-        return np.array([0.0, 0.92637, 0.0, 0.92637])
+        # Match both proximal joints to the XML actuators' open target.
+        return np.array([0.4, 0.4])
 
     @property
     def observation_joints(self):
@@ -65,7 +65,7 @@ class JacoTwoFingerGripper(JacoTwoFingerGripperBase):
         """
         Move both actuator targets toward open (-1) or closed (+1).
 
-        XML actuator ranges map the normalized targets to [0, 1.4] radians.
+        XML actuator ranges map the normalized targets to [0.4, 1.4] radians.
 
         Args:
             action (np.array): gripper-specific action
@@ -81,7 +81,7 @@ class JacoTwoFingerGripper(JacoTwoFingerGripperBase):
 
     @property
     def speed(self):
-        return 0.01
+        return 0.005
 
     @property
     def dof(self):
